@@ -21,6 +21,7 @@ const createMeal = catchAsync(async (req, res, next) => {
 });
 
 const getAllMeals = catchAsync(async (req, res, next) => {
+
   const meals = await Meal.findAll({ where: { status: "active" } , include: [ {model: Restaurant }]}  );
 
   res.status(200).json({
@@ -39,7 +40,6 @@ const getMealById = catchAsync(async (req, res, next) => {
   res.status(200).json({
     status: "success",
     meal,
-    include: {Restaurant}
   });
 });
 

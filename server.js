@@ -25,6 +25,9 @@ db.authenticate()
 User.hasMany(Review, { foreignKey: 'userId' });
 	Review.belongsTo(User);
 
+	Order.belongsToMany(Restaurant, { through: 'OrderRestaurant' });
+	Restaurant.belongsToMany(Order, { through: 'OrderRestaurant' });
+
 	Restaurant.hasMany(Review, { foreignKey: 'restaurantId' });
 	Review.belongsTo(Restaurant);
 
@@ -38,7 +41,8 @@ User.hasMany(Review, { foreignKey: 'userId' });
 	Meal.belongsTo(Restaurant);
 
 
-
+	
+	
 
 db.sync()
 	.then(() => console.log('Db synced'))
