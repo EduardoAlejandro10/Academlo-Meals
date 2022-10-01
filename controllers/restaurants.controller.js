@@ -59,6 +59,7 @@ const updateRestaurant = catchAsync(async (req, res, next) => {
 
   res.status(204).json({
     status: "success",
+    message:"you have updated your restaurant",
     restaurant,
   });
 });
@@ -78,7 +79,7 @@ const deleteRestaurant = catchAsync(async (req, res, next) => {
 const createReview = catchAsync(async (req, res, next) => {
   const { rating, comment, restaurantId, userId } = req.body;
 
-  const newReview = Review.create({
+  const newReview = await Review.create({
     restaurantId,
     rating,
     comment,
@@ -87,7 +88,8 @@ const createReview = catchAsync(async (req, res, next) => {
 
   res.status(201).json({
     status: "success",
-    newReview,
+    comment,
+    newReview
   });
 });
 
