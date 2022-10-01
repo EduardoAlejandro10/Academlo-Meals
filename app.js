@@ -20,6 +20,8 @@ const app = express();
 // Enable incoming JSON
 app.use(express.json());
 
+app.use(helmet());
+
 // Define our endpoints
 app.use('/api/v1/users', usersRouter );
 app.use('/api/v1/restaurants', restaurantsRouter);
