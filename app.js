@@ -1,5 +1,5 @@
 const express = require('express');
-const helmet = require("helmet");
+const cors = require('cors')
 
 const {globalErrorHandler} = require('./controllers/error.controller');
 
@@ -13,6 +13,7 @@ const { mealsRouter } = require('./routes/meals.routes');
 const {ordersRouter} = require('./routes/orders.routes');
 
 const { AppError } = require('./utils/appError.util');
+const { header } = require('express-validator');
 
 
 // initialize express
@@ -21,7 +22,7 @@ const app = express();
 // Enable incoming JSON
 app.use(express.json());
 
-app.use(helmet());
+app.use(cors();
 
 // Define our endpoints
 app.use('/api/v1/users', usersRouter );
