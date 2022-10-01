@@ -22,7 +22,7 @@ const app = express();
 // Enable incoming JSON
 app.use(express.json());
 
-app.use(cors();
+app.use(cors());
 
 // Define our endpoints
 app.use('/api/v1/users', usersRouter );
